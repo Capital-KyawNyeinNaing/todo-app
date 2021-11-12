@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
 
-
-
 :root {
   --color-main: #4AE54A;
   --color-text: #383a3f;
@@ -24,9 +22,6 @@
   --color-white: #2e3235;
   --color-border:#252629;
 }
-
-/* BASE STYLES */
-
 
 *{
   margin: 0;

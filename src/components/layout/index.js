@@ -1,16 +1,18 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import AppRoute from "../../router/router";
+import Header from "./Header";
 
 const Layout = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="container dark">
         <div className="app">
+          <Header />
           <AppRoute />
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 

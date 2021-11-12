@@ -1,5 +1,6 @@
 import Notes from "../pages/Notes";
 import Note from "../pages/Note";
+import NotFound from "../pages/404";
 
 const Routes = [
   {
@@ -7,9 +8,13 @@ const Routes = [
     component: Notes,
   },
   {
-    path: "/note",
+    path: "/note/:id",
     component: Note,
+  },
+  {
+    path: "*",
+    component: NotFound,
   },
 ];
 
-export default Routes
+export default Routes;

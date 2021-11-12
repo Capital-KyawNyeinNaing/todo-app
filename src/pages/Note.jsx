@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import { useHistory, useLocation } from "react-router";
 
 const Note = () => {
-  return (
-    <div>
-      Note
-    </div>
-  )
-}
+  const history = useHistory();
+  const location = useLocation();
 
-export default Note
+  console.log(location.state);
+
+  return (
+    <>
+      <div>Note</div>
+      <button onClick={() => history.goBack("/")}>Back</button>
+    </>
+  );
+};
+
+export default Note;
