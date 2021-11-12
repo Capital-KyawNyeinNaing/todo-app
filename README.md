@@ -9,8 +9,8 @@
   yarn start (npm run start)
 
   vscode extensions (knn-snippets)
-  - _syrafce (Create arrow functional component)
-  - _syimrr (Import React Router Dom)
+  ` _syrafce (Create arrow functional component) `
+  ` _syimrr (Import React Router Dom) `
 
 ```
 ## To do
