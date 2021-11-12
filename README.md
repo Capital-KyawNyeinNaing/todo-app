@@ -14,6 +14,5 @@
 
 ```
 ## To do
-[ ] Router
-[ ] change route
-[ ]
+ - Router
+ - change route
