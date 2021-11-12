@@ -12,13 +12,13 @@
   npx create-react-app my-app
 ```
 
-#### Use yarn
+##### Use yarn
 
 ```
   yarn start
 ```
 
-#### Use Npm
+##### Use Npm
 
 ```
   npm run start
@@ -26,7 +26,7 @@
 
 ### Vscode exxtensions (knn-snippets)
 
-#### Create arrow functional component
+##### Create arrow functional component
 
 ```
   _syrafce
