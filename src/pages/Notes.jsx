@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import SubHeader from "../components/layout/SubHeader";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { noteAction } from "../store/actions/note.action";
 
 const Notes = () => {
   const history = useHistory();
   const [data, setData] = useState([]);
+  const { note_data } = useSelector((state) => state.noteReducer);
+  const dispatch = useDispatch();
 
   const handleRouteChange = (index) => {
     history.push({
@@ -14,24 +18,34 @@ const Notes = () => {
     });
   };
 
-  useEffect(async () => {
-    await axios.get("http://localhost:5000/notes")
-      .then((res) => setData(res.data));
+  useEffect(() => {
+    dispatch(noteAction.getNote());
+  }, [dispatch]);
 
-    // let response = await fetch("http://localhost:5000/notes");
-    // let data = await response.json();
-    // setData(data);
+  console.log(note_data);
 
-    // await fetch("http://localhost:5000/notes")
-    //   .then((res) => res.json())
-    //   .then((payload) => setData(payload));
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await axios
+  //       .get("http://localhost:5000/notes")
+  //       .then((res) => setData(res.data));
+
+  //     // let response = await fetch("http://localhost:5000/notes");
+  //     // let data = await response.json();
+  //     // setData(data);
+
+  //     // await fetch("http://localhost:5000/notes")
+  //     //   .then((res) => res.json())
+  //     //   .then((payload) => setData(payload));
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="notes">
       <SubHeader />
       <div className="notes-list">
-        {data.map((note, index) => (
+        {note_data?.map((note, index) => (
           <div
             className="notes-list-item"
             onClick={() => handleRouteChange(index)}

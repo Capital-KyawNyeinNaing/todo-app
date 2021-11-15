@@ -12,8 +12,15 @@
   ` _syrafce (Create arrow functional component) `
   ` _syimrr (Import React Router Dom) `
 
+  ` _syrxactionget (Create a redux action API) `
+  ` _syrxreducerapi (Create a redux reducer) `
+  ` _sytypes (Create redux types) `
+  ` _syrxcombine (Combine reducers) `
+  ` _syrxmiddleware (Create store) `
+
 ```
 ## To do
  - Router
  - Change route
  - Use History
+ - Redux with API

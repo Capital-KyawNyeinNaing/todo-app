@@ -1,11 +1,12 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router";
+// import { useHistory, useLocation } from "react-router-dom";
 
-const Note = () => {
-  const history = useHistory();
-  const location = useLocation();
+const Note = ({match, history}) => {
+  // const history = useHistory();
+  // const location = useLocation();
 
-  console.log(location.state);
+  console.log(match)
+  console.log(history)
 
   return (
     <>
