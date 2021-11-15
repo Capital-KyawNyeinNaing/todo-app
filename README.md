@@ -1,16 +1,38 @@
 # Getting started with Create React App
 
-```
-  Node js download (LTS version)
-  
-  npm install --global yarn (yarn install globally)
-  
-  npx create-react-app my-app
-  yarn start (npm run start)
+### Node Js Download (LTS version)
 
-  vscode extensions (knn-snippets)
-  ` _syrafce (Create arrow functional component) `
-  ` _syimrr (Import React Router Dom) `
+### Yarn install globally
+```
+  npm install --global yarn
+```
+
+### Create React App
+```
+  npx create-react-app my-app
+```
+
+##### Use yarn
+
+```
+  yarn start
+```
+
+##### Use Npm
+
+```
+  npm run start
+```
+
+### Vscode exxtensions (knn-snippets)
+
+##### Create arrow functional component
+
+```
+  _syrafce
+```
+
+#### Import React Router Dom
 
   ` _syrxactionget (Create a redux action API) `
   ` _syrxreducerapi (Create a redux reducer) `
@@ -19,6 +41,9 @@
   ` _syrxmiddleware (Create store) `
 
 ```
+  _syimrr
+```
+
 ## To do
  - Router
  - Change route
