@@ -46,3 +46,4 @@
  - Change route
  - Use History
  - Redux with API
+ - Create Note using redux API
