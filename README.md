@@ -21,6 +21,12 @@
   build project (yarn build/ npm run build)
 ```
 
+### Run serer
+```
+  yarn server
+  npn run server
+```
+
 ### Vscode extension (knn-snippets)
 
 ```
