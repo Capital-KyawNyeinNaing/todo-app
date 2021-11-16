@@ -21,8 +21,9 @@
   build project (yarn build/ npm run build)
 ```
 
+### Vscode extension (knn-snippets)
+
 ```
-  vscode extensions (knn-snippets)
   ` _syrafce (Create arrow functional component) `
   ` _syimrr (Import React Router Dom) `
   
