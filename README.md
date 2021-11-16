@@ -45,3 +45,4 @@
  - Router
  - Change route
  - Use History
+ - Redux with API
