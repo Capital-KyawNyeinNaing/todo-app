@@ -21,7 +21,7 @@
   build project (yarn build/ npm run build)
 ```
 
-### Run serer
+### Run server
 ```
   yarn server
   npn run server
