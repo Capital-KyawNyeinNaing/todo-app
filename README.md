@@ -1,13 +1,27 @@
 # Getting started with Create React App
 
-```
-  Node js download (LTS version)
-  
-  npm install --global yarn (yarn install globally)
-  
-  npx create-react-app my-app
-  yarn start (npm run start)
+### Node js download (LTS version)
 
+### Yarn install globally
+```
+  npm install --global yarn
+```
+
+### Create React App
+```
+  npx create-react-app my-app
+```
+
+### Setup React app from git repo
+```
+  git clone repo
+  cd ./dir
+  install package (yarn/ npm install)
+  run project (yarn start/ npm run start)
+  build project (yarn build/ npm run build)
+```
+
+```
   vscode extensions (knn-snippets)
   ` _syrafce (Create arrow functional component) `
   ` _syimrr (Import React Router Dom) `
