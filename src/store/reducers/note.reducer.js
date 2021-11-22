@@ -4,7 +4,8 @@ const initialState = {
   error: null,
   isLoading: false,
   note_data: null,
-  createNote_data: null
+  createNote_data: null,
+  updateNote_data: null,
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -39,6 +40,24 @@ const todoReducer = (state = initialState, action) => {
         createNote_data: action.data,
       };
     case types.CREATENOTE_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
+      };
+
+    case types.UPDATENOTE_REQUEST: // create note
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case types.UPDATENOTE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        updateNote_data: action.data,
+      };
+    case types.UPDATENOTE_ERROR:
       return {
         ...state,
         isLoading: false,

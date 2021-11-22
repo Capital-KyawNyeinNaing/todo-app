@@ -1,10 +1,10 @@
 import React from "react";
 
-const SubHeader = () => {
+const SubHeader = ({ noteCount }) => {
   return (
     <div className="notes-header">
       <h2 className="notes-title">&#9782; List</h2>
-      <p className="notes-count">{1}</p>
+      <p className="notes-count">{noteCount}</p>
     </div>
   );
 };

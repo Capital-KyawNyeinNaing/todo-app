@@ -1,77 +1,79 @@
 import React, { useEffect, useState, createRef } from "react";
 import styled from "styled-components";
 import SubHeader from "../components/layout/SubHeader";
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { noteAction } from "../store/actions/note.action";
 import { HiOutlinePlusSm } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 
 const Notes = () => {
   const history = useHistory();
-  const [data, setData] = useState([]);
+  const location = useLocation();
+  const [inputValue, setInputValue] = useState("");
   const [create, setCreate] = useState(false);
-  const { isLoading, note_data } = useSelector((state) => state.noteReducer);
+  const [isDelete, setIsDelete] = useState(false);
+  const { note_data } = useSelector((state) => state.noteReducer);
   const dispatch = useDispatch();
   const inputRef = createRef();
 
-  const handleRouteChange = (index) => {
-    history.push({
-      pathname: `/note/${index}`,
-      state: data,
-    });
+  const handleRouteChange = (id) => {
+    history.push(`/note/${id}`);
   };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const state = location.state !== undefined && location.state;
 
   useEffect(() => {
     dispatch(noteAction.getNote());
 
     create && setCreate(!create);
-  }, [dispatch, create]);
+    setIsDelete(false);
+  }, [dispatch, create, state, isDelete]);
 
   const handleAddNote = () => {
     dispatch(
-      noteAction.crateNote({
+      noteAction.createNote({
         body: inputRef.current.value,
         updated: new Date(),
       })
     );
+    setInputValue("");
     setCreate(true);
   };
 
-  console.log(note_data)
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await axios
-  //       .get("http://localhost:5000/notes")
-  //       .then((res) => setData(res.data));
-
-  //     // let response = await fetch("http://localhost:5000/notes");
-  //     // let data = await response.json();
-  //     // setData(data);
-
-  //     // await fetch("http://localhost:5000/notes")
-  //     //   .then((res) => res.json())
-  //     //   .then((payload) => setData(payload));
-  //   };
-  //   fetchData();
-  // }, []);
+  const handleDelete = (id) => {
+    dispatch(noteAction.deleteNote({ id }));
+    setIsDelete(true);
+  };
 
   return (
     <div className="notes">
-      <SubHeader />
+      <SubHeader noteCount={note_data?.length > 0 && note_data.length} />
       <div className="notes-list">
         {note_data?.map((note, index) => (
-          <div
-            className="notes-list-item"
-            onClick={() => handleRouteChange(index)}
-            key={index}
-          >
-            {note.body}
+          <div className="notes-list-item" key={index}>
+            <Box>
+              <div onClick={() => handleRouteChange(index + 1)}>
+                {note.body}
+              </div>
+              <div onClick={() => handleDelete(index + 1)}>
+                <MdDelete />
+              </div>
+            </Box>
           </div>
         ))}
         <InputWrap>
-          <input type="text" placeholder="Add note" ref={inputRef} />
+          <input
+            type="text"
+            placeholder="Add note"
+            ref={inputRef}
+            value={inputValue}
+            onChange={(e) => handleInputChange(e)}
+          />
         </InputWrap>
       </div>
       <div className="floating-button" onClick={handleAddNote}>
@@ -102,4 +104,10 @@ const InputWrap = styled.div`
     border: 0;
     padding: 10px;
   }
+`;
+
+const Box = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;

@@ -1,24 +1,9 @@
 {
   "notes": [
     {
-      "body": "Task",
-      "updated": "2021-11-16T11:15:57.767Z",
+      "body": "Add",
+      "updated": "2021-11-22T11:23:31.705Z",
       "id": 1
-    },
-    {
-      "body": "Task one",
-      "updated": "2021-11-16T11:32:52.124Z",
-      "id": 2
-    },
-    {
-      "body": "Task two",
-      "updated": "2021-11-16T11:33:21.958Z",
-      "id": 3
-    },
-    {
-      "body": "Task three",
-      "updated": "2021-11-16T11:33:32.597Z",
-      "id": 4
     }
   ]
 }
