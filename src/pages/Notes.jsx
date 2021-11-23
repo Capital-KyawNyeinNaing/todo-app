@@ -3,9 +3,10 @@ import styled from "styled-components";
 import SubHeader from "../components/layout/SubHeader";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { noteAction } from "../store/actions/note.action";
+import { noteAction, emitAction } from "../store/actions";
 import { HiOutlinePlusSm } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
+import ModalBox from "../components/Modal";
 
 const Notes = () => {
   const history = useHistory();
@@ -13,7 +14,9 @@ const Notes = () => {
   const [inputValue, setInputValue] = useState("");
   const [create, setCreate] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const [getId, setgetId] = useState();
   const { note_data } = useSelector((state) => state.noteReducer);
+  const { isModal } = useSelector((state) => state.emitReducer);
   const dispatch = useDispatch();
   const inputRef = createRef();
 
@@ -46,40 +49,57 @@ const Notes = () => {
   };
 
   const handleDelete = (id) => {
+    dispatch(emitAction("IS_MODAL", true));
+    setgetId(id);
+  };
+
+  const handleApi = (id) => {
     dispatch(noteAction.deleteNote({ id }));
     setIsDelete(true);
   };
 
+  const handleClose = () => {
+    dispatch(emitAction("IS_MODAL", false));
+  };
+
   return (
-    <div className="notes">
-      <SubHeader noteCount={note_data?.length > 0 && note_data.length} />
-      <div className="notes-list">
-        {note_data?.map((note, index) => (
-          <div className="notes-list-item" key={index}>
-            <Box>
-              <div onClick={() => handleRouteChange(index + 1)}>
-                {note.body}
-              </div>
-              <div onClick={() => handleDelete(index + 1)}>
-                <MdDelete />
-              </div>
-            </Box>
-          </div>
-        ))}
-        <InputWrap>
-          <input
-            type="text"
-            placeholder="Add note"
-            ref={inputRef}
-            value={inputValue}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </InputWrap>
+    <>
+      <div className="notes">
+        <SubHeader noteCount={note_data?.length > 0 && note_data.length} />
+        <div className="notes-list">
+          {note_data?.map((note, index) => (
+            <div className="notes-list-item" key={index}>
+              <Box>
+                <div onClick={() => handleRouteChange(note.id)}>
+                  {note.body}
+                </div>
+                <div onClick={() => handleDelete(note.id)}>
+                  <MdDelete />
+                </div>
+              </Box>
+            </div>
+          ))}
+          <InputWrap>
+            <input
+              type="text"
+              placeholder="Add note"
+              ref={inputRef}
+              value={inputValue}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </InputWrap>
+        </div>
+        <div className="floating-button" onClick={handleAddNote}>
+          <HiOutlinePlusSm />
+        </div>
       </div>
-      <div className="floating-button" onClick={handleAddNote}>
-        <HiOutlinePlusSm />
-      </div>
-    </div>
+      <ModalBox
+        isModal={isModal}
+        handleClose={handleClose}
+        handleApi={handleApi}
+        getId={getId}
+      />
+    </>
   );
 };
 
